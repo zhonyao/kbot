@@ -43,7 +43,7 @@ to quickly create a Cobra application.`,
 			log.Fatalf("Plaese check TELE_TOKEN env variable. %s", err)
 			return
 		}
-
+		
 		kbot.Handle(telebot.OnText, func(m telebot.Context) error {
 
 			log.Print(m.Message().Payload, m.Text())
@@ -53,6 +53,10 @@ to quickly create a Cobra application.`,
 			switch payload {
 			case "hello":
 				err = m.Send(fmt.Sprintf("Hello I`m Kbot %s!", appVersion))
+			case "github":
+				var x string = "https://github.com/zhonyao/kbot"
+				err = m.Send(fmt.Sprintf("URL GitHub project %s", x))
+	
 			}
 
 			return err
